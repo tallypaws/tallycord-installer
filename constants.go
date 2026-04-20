@@ -13,10 +13,10 @@ import (
 
 const ReleaseUrl = "https://api.github.com/repos/Vendicated/Tallycord/releases/latest"
 const ReleaseUrlFallback = "https://tallycord.dev/releases/tallycord"
-const InstallerReleaseUrl = "https://api.github.com/repos/tallypaws/tallycord-installer/releases/latest"
+const InstallerReleaseUrl = "https://api.github.com/repos/tallylostctrl/tallycord-installer/releases/latest"
 const InstallerReleaseUrlFallback = "https://tallycord.dev/releases/installer"
 
-var UserAgent = "TallycordInstaller/" + buildinfo.InstallerGitHash + " (https://github.com/tallypaws/tallycord-installer)"
+var UserAgent = "TallycordInstaller/" + buildinfo.InstallerGitHash + " (https://github.com/tallylostctrl/tallycord-installer)"
 
 var (
 	DiscordGreen  = color.RGBA{R: 0x2D, G: 0x7C, B: 0x46, A: 0xFF}

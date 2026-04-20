@@ -1,4 +1,4 @@
-$link = "https://github.com/tallypaws/tallycord-installer/releases/latest/download/TallycordInstallerCli.exe"
+$link = "https://github.com/tallylostctrl/tallycord-installer/releases/latest/download/TallycordInstallerCli.exe"
 
 $outfile = "$env:TEMP\TallycordInstallerCli.exe"
 

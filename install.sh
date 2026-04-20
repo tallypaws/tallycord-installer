@@ -18,7 +18,7 @@ echo "Downloading Installer..."
 
 set -- "XDG_CONFIG_HOME=$XDG_CONFIG_HOME"
 
-curl -sS https://github.com/tallypaws/tallycord-installer/releases/latest/download/TallycordInstallerCli-Linux \
+curl -sS https://github.com/tallylostctrl/tallycord-installer/releases/latest/download/TallycordInstallerCli-Linux \
   --output "$outfile" \
   --location \
   --fail

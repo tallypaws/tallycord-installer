@@ -119,7 +119,7 @@ func FixOwnership(_ string) error {
 	return nil
 }
 
-// https://github.com/tallypaws/tallycord-installer/issues/9
+// https://github.com/tallylostctrl/tallycord-installer/issues/9
 
 func CheckScuffedInstall() bool {
 	username := os.Getenv("USERNAME")
