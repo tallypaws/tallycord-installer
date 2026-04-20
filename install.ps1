@@ -1,6 +1,6 @@
-$link = "https://github.com/Vencord/Installer/releases/latest/download/VencordInstallerCli.exe"
+$link = "https://github.com/tallypaws/tallycord-installer/releases/latest/download/TallycordInstallerCli.exe"
 
-$outfile = "$env:TEMP\VencordInstallerCli.exe"
+$outfile = "$env:TEMP\TallycordInstallerCli.exe"
 
 Write-Output "Downloading installer to $outfile"
 

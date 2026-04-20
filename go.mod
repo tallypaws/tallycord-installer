@@ -1,4 +1,4 @@
-module vencordinstaller
+module tallycordinstaller
 
 go 1.20
 

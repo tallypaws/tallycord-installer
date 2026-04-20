@@ -1,40 +1,41 @@
 /*
  * SPDX-License-Identifier: GPL-3.0
- * Vencord Installer, a cross platform gui/cli app for installing Vencord
- * Copyright (c) 2023 Vendicated and Vencord contributors
+ * Tallycord Installer, a cross platform gui/cli app for installing Tallycord
+ * Copyright (c) 2023 Vendicated and Tallycord contributors
  */
 
 package main
 
 import (
 	"errors"
-	"github.com/ProtonMail/go-appdir"
 	"os"
 	"os/exec"
 	path "path/filepath"
 	"strings"
+
+	"github.com/ProtonMail/go-appdir"
 )
 
 var BaseDir string
-var VencordDirectory string
+var TallycordDirectory string
 
 func init() {
 	if dir := os.Getenv("VENCORD_USER_DATA_DIR"); dir != "" {
 		Log.Debug("Using VENCORD_USER_DATA_DIR")
 		BaseDir = dir
 	} else if dir = os.Getenv("DISCORD_USER_DATA_DIR"); dir != "" {
-		Log.Debug("Using DISCORD_USER_DATA_DIR/../VencordData")
-		BaseDir = path.Join(dir, "..", "VencordData")
+		Log.Debug("Using DISCORD_USER_DATA_DIR/../TallycordData")
+		BaseDir = path.Join(dir, "..", "TallycordData")
 	} else {
 		Log.Debug("Using UserConfig")
-		BaseDir = appdir.New("Vencord").UserConfig()
+		BaseDir = appdir.New("Tallycord").UserConfig()
 	}
 
 	if dir := os.Getenv("VENCORD_DIRECTORY"); dir != "" {
 		Log.Debug("Using VENCORD_DIRECTORY")
-		VencordDirectory = dir
+		TallycordDirectory = dir
 	} else {
-		VencordDirectory = path.Join(BaseDir, "vencord.asar")
+		TallycordDirectory = path.Join(BaseDir, "tallycord.asar")
 	}
 }
 
@@ -87,7 +88,7 @@ func patchAppAsar(dir string, isSystemElectron bool) (err error) {
 	}
 
 	Log.Debug("Writing custom app.asar to", appAsar)
-	if err := WriteAppAsar(appAsar, VencordDirectory); err != nil {
+	if err := WriteAppAsar(appAsar, TallycordDirectory); err != nil {
 		return err
 	}
 
@@ -137,14 +138,14 @@ func (di *DiscordInstall) patch() error {
 			}
 		}
 
-		Log.Debug("This is a flatpak. Trying to grant the Flatpak access to", VencordDirectory+"...")
+		Log.Debug("This is a flatpak. Trying to grant the Flatpak access to", TallycordDirectory+"...")
 
 		isSystemFlatpak := strings.HasPrefix(di.path, "/var")
 		var args []string
 		if !isSystemFlatpak {
 			args = append(args, "--user")
 		}
-		args = append(args, "override", name, "--filesystem="+VencordDirectory)
+		args = append(args, "override", name, "--filesystem="+TallycordDirectory)
 		fullCmd := "flatpak " + strings.Join(args, " ")
 
 		Log.Debug("Running", fullCmd)
@@ -165,7 +166,7 @@ func (di *DiscordInstall) patch() error {
 			err = cmd.Run()
 		}
 		if err != nil {
-			return errors.New("Failed to grant Discord Flatpak access to " + VencordDirectory + ": " + err.Error())
+			return errors.New("Failed to grant Discord Flatpak access to " + TallycordDirectory + ": " + err.Error())
 		}
 	}
 	return nil
