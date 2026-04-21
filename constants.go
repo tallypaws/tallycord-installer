@@ -11,7 +11,7 @@ import (
 	"tallycordinstaller/buildinfo"
 )
 
-const ReleaseUrl = "https://api.github.com/repos/Vendicated/Tallycord/releases/latest"
+const ReleaseUrl = "https://api.github.com/repos/Tally-gay/Tallycord/releases/latest"
 const ReleaseUrlFallback = "https://tallycord.dev/releases/tallycord"
 const InstallerReleaseUrl = "https://api.github.com/repos/tallylostctrl/tallycord-installer/releases/latest"
 const InstallerReleaseUrlFallback = "https://tallycord.dev/releases/installer"
